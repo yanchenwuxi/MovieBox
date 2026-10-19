@@ -111,6 +111,41 @@ public class Store {
     public boolean autoFailover() { return sp.getBoolean("auto_failover", true); }
     public void setAutoFailover(boolean v) { sp.edit().putBoolean("auto_failover", v).apply(); }
 
+    public boolean autoNext() { return sp.getBoolean("auto_next", true); }
+    public void setAutoNext(boolean v) { sp.edit().putBoolean("auto_next", v).apply(); }
+
+    public boolean gestureEnable() { return sp.getBoolean("gesture_enable", true); }
+    public void setGestureEnable(boolean v) { sp.edit().putBoolean("gesture_enable", v).apply(); }
+
+    public void setLastWatch(String vodKey, int line, int ep, String epName) {
+        sp.edit()
+                .putInt("lw_line_" + vodKey, line)
+                .putInt("lw_ep_" + vodKey, ep)
+                .putString("lw_epn_" + vodKey, epName == null ? "" : epName)
+                .apply();
+    }
+
+    public String lastWatchLabel(String vodKey) {
+        String epn = sp.getString("lw_epn_" + vodKey, "");
+        long pos = sp.getLong("lw_pos_" + vodKey, 0);
+        if (epn.isEmpty() && pos <= 0) return "";
+        String t = formatPos(pos);
+        if (!epn.isEmpty() && !t.isEmpty()) return "看到 " + epn + " · " + t;
+        if (!epn.isEmpty()) return "看到 " + epn;
+        return "看到 " + t;
+    }
+
+    public void setLastWatchProgress(String vodKey, long pos, long dur) {
+        sp.edit().putLong("lw_pos_" + vodKey, pos).putLong("lw_dur_" + vodKey, dur).apply();
+    }
+
+    private static String formatPos(long ms) {
+        if (ms <= 0) return "";
+        int s = (int) (ms / 1000);
+        int h = s / 3600, m = (s % 3600) / 60, sec = s % 60;
+        return h > 0 ? String.format("%d:%02d:%02d", h, m, sec) : String.format("%02d:%02d", m, sec);
+    }
+
     public String searchHistoryJson() { return sp.getString("search_history", "[]"); }
     public List<String> searchHistory() {
         try {

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -25,10 +27,11 @@ import com.zaka.moviebox.adapter.TextAdapter;
 import com.zaka.moviebox.model.Episode;
 import com.zaka.moviebox.model.PlayLine;
 import com.zaka.moviebox.model.Vod;
+import com.zaka.moviebox.player.GestureHelper;
 import com.zaka.moviebox.player.KernelListener;
 import com.zaka.moviebox.player.MediaUrlHelper;
 import com.zaka.moviebox.player.MoviePlayer;
-import android.view.TextureView;
+import com.zaka.moviebox.player.TrackInfo;
 import com.zaka.moviebox.util.Ui;
 
 import java.text.SimpleDateFormat;
@@ -38,7 +41,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * 阶段1：播放逻辑下沉到 MoviePlayer，Activity 只负责 UI 与业务编排。
+ * 阶段3：手势、自动下一集、音轨/字幕选择。
  */
 public class PlayerActivity extends AppCompatActivity {
     private MoviePlayer player;
@@ -49,12 +52,14 @@ public class PlayerActivity extends AppCompatActivity {
     private String currentUrl;
 
     private View controlLayer, loadingView;
-    private TextView tvTitle, tvCur, tvTotal, tvClock, tvError;
+    private TextView tvTitle, tvCur, tvTotal, tvClock, tvError, gestureTip;
     private ImageView btnPlayPause;
     private SeekBar seekBar;
     private boolean locked = false, showing = true;
     private boolean dragging = false;
     private final Handler ui = new Handler(Looper.getMainLooper());
+    private GestureHelper gestureHelper;
+    private android.view.GestureDetector tapDetector;
 
     @Override
     protected void onCreate(Bundle b) {
@@ -69,6 +74,7 @@ public class PlayerActivity extends AppCompatActivity {
 
         bindViews();
         bindClicks();
+        initGestures();
         initPlayer();
         playEpisode(epIndex);
         ui.post(clock);
@@ -84,6 +90,7 @@ public class PlayerActivity extends AppCompatActivity {
         tvTotal = findViewById(R.id.tvTotalTime);
         tvClock = findViewById(R.id.tvClock);
         tvError = findViewById(R.id.tvError);
+        gestureTip = findViewById(R.id.gestureTip);
         btnPlayPause = findViewById(R.id.btnPlayPause);
         seekBar = findViewById(R.id.seekBar);
     }
@@ -97,25 +104,16 @@ public class PlayerActivity extends AppCompatActivity {
         findViewById(R.id.btnScale).setOnClickListener(v -> showScale());
         findViewById(R.id.btnEpisodes).setOnClickListener(v -> showEpisodes());
         findViewById(R.id.btnLines).setOnClickListener(v -> showLines());
+        View tracks = findViewById(R.id.btnTracks);
+        if (tracks != null) tracks.setOnClickListener(v -> showTracks());
         findViewById(R.id.btnFullscreen).setOnClickListener(v -> toggleOrientation());
         findViewById(R.id.btnLock).setOnClickListener(v -> {
             locked = !locked;
             Ui.toast(this, locked ? "已锁定屏幕" : "已解锁");
+            if (gestureHelper != null) gestureHelper.setEnabled(!locked && App.get().store.gestureEnable());
             if (locked) hideControl();
         });
 
-        final android.view.GestureDetector gd = new android.view.GestureDetector(this,
-                new android.view.GestureDetector.SimpleOnGestureListener() {
-                    @Override public boolean onSingleTapConfirmed(android.view.MotionEvent e) {
-                        toggleControl();
-                        return true;
-                    }
-                    @Override public boolean onDoubleTap(android.view.MotionEvent e) {
-                        togglePlay();
-                        return true;
-                    }
-                });
-        playerView.setOnTouchListener((v, e) -> { gd.onTouchEvent(e); return true; });
         controlLayer.setOnClickListener(v -> toggleControl());
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -134,6 +132,45 @@ public class PlayerActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void initGestures() {
+        gestureHelper = new GestureHelper(this, new GestureHelper.Callback() {
+            @Override public long getPosition() { return player == null ? 0 : player.getCurrentPosition(); }
+            @Override public long getDuration() { return player == null ? 0 : player.getDuration(); }
+            @Override public void seekTo(long ms) { if (player != null) player.seekTo(ms); }
+            @Override public boolean isPlaying() { return player != null && player.isPlaying(); }
+            @Override public void setSpeed(float speed) {
+                if (player != null) player.setSpeed(speed);
+            }
+            @Override public float getSpeed() { return player == null ? 1f : player.getSpeed(); }
+        });
+        gestureHelper.setTipView(gestureTip);
+        gestureHelper.setEnabled(App.get().store.gestureEnable());
+
+        tapDetector = new android.view.GestureDetector(this,
+                new android.view.GestureDetector.SimpleOnGestureListener() {
+                    @Override public boolean onSingleTapConfirmed(MotionEvent e) {
+                        if (!locked) toggleControl();
+                        return true;
+                    }
+                    @Override public boolean onDoubleTap(MotionEvent e) {
+                        if (!locked) togglePlay();
+                        return true;
+                    }
+                });
+
+        View.OnTouchListener tl = (v, e) -> {
+            if (locked) {
+                if (e.getAction() == MotionEvent.ACTION_UP) Ui.toast(this, "屏幕已锁定");
+                return true;
+            }
+            boolean g = gestureHelper != null && gestureHelper.onTouch(e);
+            tapDetector.onTouchEvent(e);
+            return true;
+        };
+        playerView.setOnTouchListener(tl);
+        textureView.setOnTouchListener(tl);
     }
 
     private void initPlayer() {
@@ -161,6 +198,14 @@ public class PlayerActivity extends AppCompatActivity {
             }
 
             @Override public void onCompletion() {
+                if (App.get().store.autoNext()) {
+                    PlayLine line = currentLine();
+                    if (line != null && epIndex + 1 < line.episodes.size()) {
+                        Ui.toast(PlayerActivity.this, "即将播放下一集");
+                        ui.postDelayed(() -> playEpisode(epIndex + 1), 600);
+                        return;
+                    }
+                }
                 Ui.toast(PlayerActivity.this, "播放结束");
             }
 
@@ -184,11 +229,19 @@ public class PlayerActivity extends AppCompatActivity {
         });
     }
 
-    private void playEpisode(int idx) {
-        if (vod.lines == null || vod.lines.isEmpty()) { finish(); return; }
+    private PlayLine currentLine() {
+        if (vod.lines == null || vod.lines.isEmpty()) return null;
         if (lineIndex < 0 || lineIndex >= vod.lines.size()) lineIndex = 0;
-        PlayLine line = vod.lines.get(lineIndex);
-        if (line.episodes == null || idx < 0 || idx >= line.episodes.size()) {
+        return vod.lines.get(lineIndex);
+    }
+
+    private void playEpisode(int idx) {
+        PlayLine line = currentLine();
+        if (line == null || line.episodes == null || line.episodes.isEmpty()) {
+            finish();
+            return;
+        }
+        if (idx < 0 || idx >= line.episodes.size()) {
             Ui.toast(this, "没有更多集数了");
             return;
         }
@@ -197,7 +250,7 @@ public class PlayerActivity extends AppCompatActivity {
         currentUrl = ep.url;
         tvTitle.setText(vod.name + " · " + ep.name);
 
-        if (!isDirect(currentUrl)) {
+        if (!MediaUrlHelper.isDirect(currentUrl)) {
             loadingView.setVisibility(View.GONE);
             tvError.setVisibility(View.VISIBLE);
             tvError.setText("该地址需要解析\n点击此处用内置浏览器打开并嗅探");
@@ -212,13 +265,13 @@ public class PlayerActivity extends AppCompatActivity {
         loadingView.setVisibility(View.VISIBLE);
         tvError.setVisibility(View.GONE);
 
-        player.setDataSource(currentUrl);
-        player.prepare();
         long pos = App.get().store.lastPos(posKey());
-        if (pos > 5000) player.seekTo(pos);
-        player.play();
+        player.open(currentUrl, null, pos);
 
+        // 历史：记录看到哪一集
+        vod.note = ep.name;
         App.get().store.addHistory(vod);
+        App.get().store.setLastWatch(vod.key(), lineIndex, epIndex, ep.name);
         savePosition();
     }
 
@@ -226,13 +279,13 @@ public class PlayerActivity extends AppCompatActivity {
         return vod.key() + "#" + lineIndex + "#" + epIndex;
     }
 
-    private boolean isDirect(String u) {
-        return MediaUrlHelper.isDirect(u);
-    }
-
     private void savePosition() {
         if (player == null) return;
-        App.get().store.setLastPos(posKey(), player.getCurrentPosition());
+        long pos = player.getCurrentPosition();
+        App.get().store.setLastPos(posKey(), pos);
+        if (vod != null) {
+            App.get().store.setLastWatchProgress(vod.key(), pos, player.getDuration());
+        }
     }
 
     private void togglePlay() {
@@ -311,6 +364,41 @@ public class PlayerActivity extends AppCompatActivity {
         for (String n : names) list.add(n);
         ad.setData(list);
         ad.setSelected(App.get().store.scale());
+        rv.setAdapter(ad);
+        v.findViewById(R.id.btnCancel).setOnClickListener(x -> d.dismiss());
+        d.setContentView(v);
+        d.show();
+    }
+
+    private void showTracks() {
+        if (player == null) return;
+        List<TrackInfo> audio = player.getAudioTracks();
+        List<TrackInfo> subs = player.getSubtitleTracks();
+        if (audio.isEmpty() && subs.isEmpty()) {
+            Ui.toast(this, "当前片源无多音轨/字幕");
+            return;
+        }
+        BottomSheetDialog d = new BottomSheetDialog(this, R.style.Theme_MovieBox_BottomDialog);
+        View v = LayoutInflater.from(this).inflate(R.layout.dialog_setting, null);
+        ((TextView) v.findViewById(R.id.title)).setText("音轨 / 字幕");
+        RecyclerView rv = v.findViewById(R.id.recyclerView);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        List<String> names = new ArrayList<>();
+        List<TrackInfo> all = new ArrayList<>();
+        for (TrackInfo t : audio) {
+            names.add("音轨 · " + t.toString());
+            all.add(t);
+        }
+        for (TrackInfo t : subs) {
+            names.add("字幕 · " + t.toString());
+            all.add(t);
+        }
+        TextAdapter ad = new TextAdapter((i, t) -> {
+            player.selectTrack(all.get(i));
+            Ui.toast(this, "已切换：" + names.get(i));
+            d.dismiss();
+        });
+        ad.setData(names);
         rv.setAdapter(ad);
         v.findViewById(R.id.btnCancel).setOnClickListener(x -> d.dismiss());
         d.setContentView(v);

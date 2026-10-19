@@ -137,9 +137,16 @@ public class SettingsActivity extends AppCompatActivity {
                             recreate();
                         }).show()
         );
+        item("播完自动下一集", App.get().store.autoNext() ? "开启" : "关闭", () -> {
+            App.get().store.setAutoNext(!App.get().store.autoNext());
+            recreate();
+        });
+        item("手势调节亮度/音量/进度", App.get().store.gestureEnable() ? "开启" : "关闭", () -> {
+            App.get().store.setGestureEnable(!App.get().store.gestureEnable());
+            recreate();
+        });
         item("IJK 内核", "需自行集成 native so（后续可选）", null);
-        item("手势调节亮度音量", "阶段3 开放", null);
-        item("说明", "阶段2：系统内核 + Exo失败自动容错 + 重试", null);
+        item("说明", "阶段3：手势、自动下一集、音轨字幕、历史进度", null);
     }
 
     private void buildHome() {
@@ -150,7 +157,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void buildAbout() {
-        item("版本", "v1.2-phase2（播放器架构升级）", null);
+        item("版本", "v1.3-phase3（播放器架构升级）", null);
         item("内置浏览器", "支持网页视频嗅探", () -> startActivity(
                 new android.content.Intent(this, BrowserActivity.class)));
         item("说明", "本应用不含任何广告 SDK，数据来自用户自行配置的采集接口。", null);

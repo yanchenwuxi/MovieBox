@@ -39,8 +39,17 @@ public class HistoryFragment extends Fragment {
         });
         finalRv.setAdapter(ad);
 
-        Runnable refresh = () -> ad.setData(tab.getSelectedTabPosition() == 0
-                ? App.get().store.history() : App.get().store.collects());
+        Runnable refresh = () -> {
+            List<Vod> list = tab.getSelectedTabPosition() == 0
+                    ? App.get().store.history() : App.get().store.collects();
+            if (tab.getSelectedTabPosition() == 0) {
+                for (Vod x : list) {
+                    String label = App.get().store.lastWatchLabel(x.key());
+                    if (label != null && !label.isEmpty()) x.note = label;
+                }
+            }
+            ad.setData(list);
+        };
         tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override public void onTabSelected(TabLayout.Tab t) { refresh.run(); }
             @Override public void onTabUnselected(TabLayout.Tab t) {}

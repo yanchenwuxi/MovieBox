@@ -5,9 +5,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.Surface;
 
+import androidx.media3.common.C;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
+import androidx.media3.common.TrackSelectionOverride;
+import androidx.media3.common.Tracks;
 import androidx.media3.common.VideoSize;
 import androidx.media3.datasource.okhttp.OkHttpDataSource;
 import androidx.media3.exoplayer.ExoPlayer;
@@ -15,6 +18,8 @@ import androidx.media3.exoplayer.source.DefaultMediaSourceFactory;
 import androidx.media3.ui.AspectRatioFrameLayout;
 import androidx.media3.ui.PlayerView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.OkHttpClient;
@@ -195,6 +200,65 @@ public class ExoKernel implements IKernel {
         listener = null;
         pendingUrl = null;
         pendingHeaders = null;
+    }
+
+    @Override
+    public List<TrackInfo> getAudioTracks() {
+        return collectTracks(C.TRACK_TYPE_AUDIO);
+    }
+
+    @Override
+    public List<TrackInfo> getSubtitleTracks() {
+        return collectTracks(C.TRACK_TYPE_TEXT);
+    }
+
+    private List<TrackInfo> collectTracks(int type) {
+        List<TrackInfo> out = new ArrayList<>();
+        if (player == null) return out;
+        Tracks tracks = player.getCurrentTracks();
+        int global = 0;
+        for (Tracks.Group g : tracks.getGroups()) {
+            if (g.getType() != type) continue;
+            for (int i = 0; i < g.length; i++) {
+                if (!g.isTrackSupported(i)) continue;
+                androidx.media3.common.Format f = g.getTrackFormat(i);
+                String lang = f.language == null ? "" : f.language;
+                String label = f.label;
+                if (label == null || label.isEmpty()) {
+                    label = lang.isEmpty() ? ("轨道" + (global + 1)) : lang;
+                }
+                int t = type == C.TRACK_TYPE_AUDIO ? TrackInfo.TYPE_AUDIO : TrackInfo.TYPE_SUBTITLE;
+                out.add(new TrackInfo(t, global, g.getMediaTrackGroup().id + ":" + i, label, lang));
+                global++;
+            }
+        }
+        return out;
+    }
+
+    @Override
+    public void selectTrack(TrackInfo track) {
+        if (player == null || track == null) return;
+        try {
+            Tracks tracks = player.getCurrentTracks();
+            int type = track.isAudio() ? C.TRACK_TYPE_AUDIO : C.TRACK_TYPE_TEXT;
+            int global = 0;
+            for (Tracks.Group g : tracks.getGroups()) {
+                if (g.getType() != type) continue;
+                for (int i = 0; i < g.length; i++) {
+                    if (!g.isTrackSupported(i)) continue;
+                    if (global == track.index) {
+                        player.setTrackSelectionParameters(
+                                player.getTrackSelectionParameters()
+                                        .buildUpon()
+                                        .setOverrideForType(
+                                                new TrackSelectionOverride(g.getMediaTrackGroup(), i))
+                                        .build());
+                        return;
+                    }
+                    global++;
+                }
+            }
+        } catch (Throwable ignored) {}
     }
 
     @Override public String name() { return "Exo"; }

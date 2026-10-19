@@ -198,6 +198,18 @@ public class MoviePlayer {
         return kernel == null ? 0 : kernel.getBufferedPercentage();
     }
 
+    public java.util.List<TrackInfo> getAudioTracks() {
+        return kernel == null ? java.util.Collections.emptyList() : kernel.getAudioTracks();
+    }
+
+    public java.util.List<TrackInfo> getSubtitleTracks() {
+        return kernel == null ? java.util.Collections.emptyList() : kernel.getSubtitleTracks();
+    }
+
+    public void selectTrack(TrackInfo track) {
+        if (kernel != null) kernel.selectTrack(track);
+    }
+
     public void release() {
         releaseKernelOnly();
         attachedExoView = null;
