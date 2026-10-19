@@ -26,7 +26,9 @@ import com.zaka.moviebox.model.Episode;
 import com.zaka.moviebox.model.PlayLine;
 import com.zaka.moviebox.model.Vod;
 import com.zaka.moviebox.player.KernelListener;
+import com.zaka.moviebox.player.MediaUrlHelper;
 import com.zaka.moviebox.player.MoviePlayer;
+import android.view.TextureView;
 import com.zaka.moviebox.util.Ui;
 
 import java.text.SimpleDateFormat;
@@ -41,6 +43,7 @@ import java.util.Locale;
 public class PlayerActivity extends AppCompatActivity {
     private MoviePlayer player;
     private PlayerView playerView;
+    private TextureView textureView;
     private Vod vod;
     private int lineIndex, epIndex;
     private String currentUrl;
@@ -73,6 +76,7 @@ public class PlayerActivity extends AppCompatActivity {
 
     private void bindViews() {
         playerView = findViewById(R.id.playerView);
+        textureView = findViewById(R.id.textureView);
         controlLayer = findViewById(R.id.controlLayer);
         loadingView = findViewById(R.id.loadingView);
         tvTitle = findViewById(R.id.tvTitle);
@@ -135,9 +139,12 @@ public class PlayerActivity extends AppCompatActivity {
     private void initPlayer() {
         player = new MoviePlayer(this);
         player.setKernelType(App.get().store.playKernel());
+        player.setMaxRetry(App.get().store.retryCount());
+        player.setAutoFailover(App.get().store.autoFailover());
         player.setSpeed(App.get().store.speed());
         player.setScaleMode(App.get().store.scale());
         player.attachPlayerView(playerView);
+        player.attachTextureView(textureView);
         player.setListener(new KernelListener() {
             @Override public void onLoading() {
                 loadingView.setVisibility(View.VISIBLE);
@@ -160,8 +167,10 @@ public class PlayerActivity extends AppCompatActivity {
             @Override public void onError(String message) {
                 loadingView.setVisibility(View.GONE);
                 tvError.setVisibility(View.VISIBLE);
-                tvError.setText("播放失败\n" + (message == null ? "" : message)
-                        + "\n\n试试：换线路 / 用内置浏览器嗅探");
+                String kn = player != null ? player.currentKernelName() : "";
+                tvError.setText("播放失败" + (kn.isEmpty() ? "" : (" [" + kn + "]"))
+                        + "\n" + (message == null ? "" : message)
+                        + "\n\n点击：浏览器嗅探 | 可先换线路重试");
                 tvError.setOnClickListener(v -> {
                     Intent i = new Intent(PlayerActivity.this, BrowserActivity.class);
                     i.putExtra("url", currentUrl);
@@ -218,12 +227,7 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     private boolean isDirect(String u) {
-        if (u == null) return false;
-        String s = u.toLowerCase(Locale.US);
-        return s.contains(".m3u8") || s.contains(".mp4") || s.contains(".flv")
-                || s.contains(".mkv") || s.contains(".ts") || s.startsWith("rtmp")
-                || s.contains(".m4v")
-                || (s.startsWith("http") && (s.contains("stream") || s.contains("playlist")));
+        return MediaUrlHelper.isDirect(u);
     }
 
     private void savePosition() {

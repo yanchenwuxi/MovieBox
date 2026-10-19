@@ -109,11 +109,24 @@ public class SettingsActivity extends AppCompatActivity {
                         recreate();
                     }).show();
         });
+        item("失败自动切换系统播放器", App.get().store.autoFailover() ? "开启" : "关闭", () -> {
+            boolean v = !App.get().store.autoFailover();
+            App.get().store.setAutoFailover(v);
+            recreate();
+        });
+        item("失败重试次数", String.valueOf(App.get().store.retryCount()), () -> {
+            String[] s = {"0", "1", "2", "3"};
+            new android.app.AlertDialog.Builder(this).setTitle("失败重试次数")
+                    .setItems(s, (d, w) -> {
+                        App.get().store.setRetryCount(Integer.parseInt(s[w]));
+                        recreate();
+                    }).show();
+        });
         item("默认倍速", App.get().store.speed() + "x", () -> {
-            String[] s = {"0.75", "1.0", "1.25", "1.5", "2.0"};
+            String[] arr = {"0.75", "1.0", "1.25", "1.5", "2.0"};
             float[] f = {0.75f, 1f, 1.25f, 1.5f, 2f};
             new android.app.AlertDialog.Builder(this).setTitle("默认倍速")
-                    .setItems(s, (d, w) -> { App.get().store.setSpeed(f[w]); recreate(); }).show();
+                    .setItems(arr, (d, w) -> { App.get().store.setSpeed(f[w]); recreate(); }).show();
         });
         String[] scaleNames = {"默认", "填充", "原始", "裁剪"};
         int scale = App.get().store.scale();
@@ -124,9 +137,9 @@ public class SettingsActivity extends AppCompatActivity {
                             recreate();
                         }).show()
         );
-        item("IJK 硬解 / 软解", "阶段2 开放", null);
+        item("IJK 内核", "需自行集成 native so（后续可选）", null);
         item("手势调节亮度音量", "阶段3 开放", null);
-        item("说明", "阶段1 已完成多内核架构，当前可用 Exo / 自动", null);
+        item("说明", "阶段2：系统内核 + Exo失败自动容错 + 重试", null);
     }
 
     private void buildHome() {
@@ -137,7 +150,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void buildAbout() {
-        item("版本", "v1.1-phase1（播放器架构升级）", null);
+        item("版本", "v1.2-phase2（播放器架构升级）", null);
         item("内置浏览器", "支持网页视频嗅探", () -> startActivity(
                 new android.content.Intent(this, BrowserActivity.class)));
         item("说明", "本应用不含任何广告 SDK，数据来自用户自行配置的采集接口。", null);

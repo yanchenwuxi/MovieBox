@@ -6,8 +6,8 @@ android {
         applicationId "com.zaka.moviebox"
         minSdk 23
         targetSdk 34
-        versionCode 2
-        versionName "1.1-phase1"
+        versionCode 3
+        versionName "1.2-phase2"
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
     buildFeatures { viewBinding false }

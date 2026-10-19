@@ -103,6 +103,14 @@ public class Store {
     public int playKernel() { return sp.getInt("play_kernel", IKernel.KERNEL_AUTO); }
     public void setPlayKernel(int k) { sp.edit().putInt("play_kernel", k).apply(); }
 
+    /** 同内核失败重试次数 */
+    public int retryCount() { return sp.getInt("retry_count", 1); }
+    public void setRetryCount(int n) { sp.edit().putInt("retry_count", Math.max(0, n)).apply(); }
+
+    /** AUTO 模式下是否允许 Exo 失败后切系统播放器 */
+    public boolean autoFailover() { return sp.getBoolean("auto_failover", true); }
+    public void setAutoFailover(boolean v) { sp.edit().putBoolean("auto_failover", v).apply(); }
+
     public String searchHistoryJson() { return sp.getString("search_history", "[]"); }
     public List<String> searchHistory() {
         try {
