@@ -315,25 +315,26 @@ public class PlayerActivity extends AppCompatActivity {
 
     private void showEpisodes() {
         if (vod.lines.isEmpty()) return;
+        PlayLine line = vod.lines.get(lineIndex);
         BottomSheetDialog d = new BottomSheetDialog(this, R.style.Theme_MovieBox_BottomDialog);
         View v = LayoutInflater.from(this).inflate(R.layout.dialog_episode, null);
-        TabLayout tabs = v.findViewById(R.id.tabs);
-        RecyclerView rv = v.findViewById(R.id.recyclerView);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-
-        for (PlayLine line : vod.lines) {
-            tabs.addTab(tabs.newTab().setText(line.name));
+        ((TextView) v.findViewById(R.id.title)).setText("选集 · " + line.name);
+        TabLayout tabs = v.findViewById(R.id.tabLines);
+        for (PlayLine l : vod.lines) {
+            tabs.addTab(tabs.newTab().setText(l.name));
         }
         if (lineIndex < tabs.getTabCount()) {
             TabLayout.Tab tab = tabs.getTabAt(lineIndex);
             if (tab != null) tab.select();
         }
 
-        EpisodeAdapter epAdapter = new EpisodeAdapter((i, ep) -> {
+        RecyclerView rv = v.findViewById(R.id.rvEpisodes);
+        rv.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(this, 4));
+        EpisodeAdapter epAdapter = new EpisodeAdapter(i -> {
             playEpisode(i);
             d.dismiss();
         });
-        epAdapter.setData(vod.lines.get(lineIndex).episodes, epIndex);
+        epAdapter.setData(line.episodes, epIndex);
         rv.setAdapter(epAdapter);
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
