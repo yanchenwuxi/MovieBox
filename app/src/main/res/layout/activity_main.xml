@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/bg_page">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"/>
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent" android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:elevation="8dp">
+
+        <View android:layout_width="match_parent" android:layout_height="0.6dp" android:background="@color/divider"/>
+
+        <LinearLayout
+            android:id="@+id/tabContainer"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:orientation="horizontal" android:gravity="center" android:paddingTop="4dp" android:paddingBottom="4dp">
+
+            <LinearLayout android:id="@+id/tab_home" style="@style/BottomTab">
+                <ImageView android:id="@+id/ic_home" style="@style/BottomIcon" android:src="@drawable/ic_home"/>
+                <TextView android:id="@+id/tv_home" style="@style/BottomText" android:text="主页"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/tab_live" style="@style/BottomTab">
+                <ImageView android:id="@+id/ic_live" style="@style/BottomIcon" android:src="@drawable/ic_tv"/>
+                <TextView android:id="@+id/tv_live" style="@style/BottomText" android:text="直播"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/tabVideoContainer" style="@style/BottomTab">
+                <ImageView android:id="@+id/ic_video" style="@style/BottomIcon" android:src="@drawable/ic_short"/>
+                <TextView android:id="@+id/tv_video" style="@style/BottomText" android:text="短剧"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/tab_history" style="@style/BottomTab">
+                <ImageView android:id="@+id/ic_history" style="@style/BottomIcon" android:src="@drawable/ic_history"/>
+                <TextView android:id="@+id/tv_history" style="@style/BottomText" android:text="历史/收藏"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/tab_setting" style="@style/BottomTab">
+                <ImageView android:id="@+id/ic_mine" style="@style/BottomIcon" android:src="@drawable/ic_mine"/>
+                <TextView android:id="@+id/tv_mine" style="@style/BottomText" android:text="我的"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

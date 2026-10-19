@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">影盒</string>
+    <string name="tab_home">主页</string>
+    <string name="tab_live">直播</string>
+    <string name="tab_short">短剧</string>
+    <string name="tab_history">历史/收藏</string>
+    <string name="tab_mine">我的</string>
+    <string name="search_hint">搜索影片、演员</string>
+</resources>

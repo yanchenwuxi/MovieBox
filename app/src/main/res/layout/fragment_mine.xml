@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/bg_page" android:fillViewport="true">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:paddingBottom="20dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="@color/primary" android:padding="20dp">
+
+            <ImageView android:layout_width="56dp" android:layout_height="56dp"
+                android:src="@mipmap/ic_launcher" android:background="@drawable/bg_dot_primary"/>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                <TextView android:id="@+id/tvUserName" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="影盒用户" android:textColor="@color/white"
+                    android:textSize="17sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvVersion" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_marginTop="4dp"
+                    android:text="v1.0 · 纯净无广告" android:textColor="#CCFFFFFF" android:textSize="12sp"/>
+            </LinearLayout>
+            <TextView android:id="@+id/btnBrowser" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:background="@drawable/bg_round_black70"
+                android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="6dp"
+                android:paddingBottom="6dp" android:text="内置浏览器" android:textColor="@color/white" android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@color/white"
+            android:layout_margin="12dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+
+            <LinearLayout android:id="@+id/itemSource" style="@style/MineItem">
+                <ImageView style="@style/MineIcon" android:src="@drawable/ic_list"/>
+                <TextView style="@style/MineTitle" android:text="接口 / 源管理"/>
+                <TextView android:id="@+id/tvSourceCount" style="@style/MineValue" android:text=""/>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/itemPlaySetting" style="@style/MineItem">
+                <ImageView style="@style/MineIcon" android:src="@drawable/ic_speed"/>
+                <TextView style="@style/MineTitle" android:text="播放设置"/>
+                <TextView android:id="@+id/tvSpeed" style="@style/MineValue" android:text="1.0x"/>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/itemHomeSetting" style="@style/MineItem">
+                <ImageView style="@style/MineIcon" android:src="@drawable/ic_settings"/>
+                <TextView style="@style/MineTitle" android:text="首页显示 / 布局"/>
+                <TextView style="@style/MineArrow" android:text="›"/>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/itemClear" style="@style/MineItem">
+                <ImageView style="@style/MineIcon" android:src="@drawable/ic_refresh"/>
+                <TextView style="@style/MineTitle" android:text="清理缓存"/>
+                <TextView style="@style/MineArrow" android:text="›"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@color/white"
+            android:layout_marginStart="12dp" android:layout_marginEnd="12dp" android:layout_marginBottom="12dp"
+            android:paddingTop="4dp" android:paddingBottom="4dp">
+
+            <LinearLayout android:id="@+id/itemAbout" style="@style/MineItem">
+                <ImageView style="@style/MineIcon" android:src="@drawable/ic_more"/>
+                <TextView style="@style/MineTitle" android:text="关于影盒"/>
+                <TextView style="@style/MineArrow" android:text="›"/>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/itemUpdate" style="@style/MineItem">
+                <ImageView style="@style/MineIcon" android:src="@drawable/ic_download"/>
+                <TextView style="@style/MineTitle" android:text="检查更新"/>
+                <TextView android:id="@+id/tvNewVersion" style="@style/MineValue" android:text="已是最新"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center" android:text="影盒 · 无广告纯净版\n内置浏览器嗅探 · 多源聚合搜索"
+            android:textColor="@color/text_light" android:textSize="11sp" android:lineSpacingExtra="3dp"/>
+    </LinearLayout>
+</ScrollView>

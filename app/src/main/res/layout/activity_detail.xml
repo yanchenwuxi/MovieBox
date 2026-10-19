@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/bg_page">
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent" android:fillViewport="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:paddingBottom="16dp">
+
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/ivBackdrop" android:layout_width="match_parent"
+                    android:layout_height="230dp" android:scaleType="centerCrop"/>
+                <View android:layout_width="match_parent" android:layout_height="230dp"
+                    android:background="#F2FFFFFF"/>
+                <View android:layout_width="match_parent" android:layout_height="230dp"
+                    android:background="@drawable/gradient_top"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:padding="14dp" android:paddingTop="130dp">
+
+                    <ImageView android:id="@+id/ivPoster" android:layout_width="100dp"
+                        android:layout_height="136dp" android:scaleType="centerCrop"
+                        android:background="@drawable/bg_img_placeholder"/>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+                        <TextView android:id="@+id/tvName" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:textSize="18sp" android:textStyle="bold"
+                            android:textColor="@color/text_main" android:maxLines="2"/>
+                        <TextView android:id="@+id/tvScore" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:layout_marginTop="4dp"
+                            android:textColor="@color/gold_text" android:textSize="13sp"/>
+                        <TextView android:id="@+id/tvType" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:layout_marginTop="4dp"
+                            android:textColor="@color/text_sub" android:textSize="12sp"/>
+                        <TextView android:id="@+id/tvActor" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:layout_marginTop="4dp" android:maxLines="2"
+                            android:textColor="@color/text_sub" android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <TextView android:id="@+id/tvDesc" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:padding="14dp" android:maxLines="3"
+                android:ellipsize="end" android:textSize="12.5sp" android:textColor="@color/text_sub"
+                android:lineSpacingExtra="3dp"/>
+
+            <com.google.android.material.tabs.TabLayout android:id="@+id/tabLines"
+                android:layout_width="match_parent" android:layout_height="42dp"
+                android:background="@color/white" app:tabMode="scrollable"
+                app:tabIndicatorColor="@color/primary" app:tabIndicatorHeight="2dp"
+                app:tabTextColor="@color/text_sub" app:tabSelectedTextColor="@color/primary"
+                app:tabMinWidth="0dp" app:tabPaddingStart="12dp" app:tabPaddingEnd="12dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvEpisodes"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@color/white" android:padding="10dp" android:nestedScrollingEnabled="false"/>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:padding="14dp" android:gravity="center" android:text="— 相关推荐 —"
+                android:textSize="12sp" android:textColor="@color/text_light"/>
+
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvRecommend"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:paddingStart="5dp" android:paddingEnd="5dp" android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageView android:id="@+id/btnBack" android:layout_width="42dp" android:layout_height="42dp"
+        android:layout_gravity="top|start" android:layout_marginTop="36dp" android:layout_marginStart="6dp"
+        android:padding="10dp" android:src="@drawable/ic_back" android:tint="@color/text_main"
+        android:background="@drawable/bg_round_black70" android:backgroundTint="#66FFFFFF"/>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="56dp"
+        android:layout_gravity="bottom" android:orientation="horizontal" android:gravity="center_vertical"
+        android:background="@color/white" android:padding="8dp" android:elevation="10dp">
+        <LinearLayout android:id="@+id/btnSwitch" android:layout_width="0dp" android:layout_height="42dp"
+            android:layout_weight="1" android:gravity="center" android:orientation="horizontal"
+            android:background="@drawable/bg_btn_gray" android:layout_marginEnd="8dp">
+            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_refresh"
+                android:tint="@color/text_main"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginStart="5dp" android:text="换源" android:textSize="13sp" android:textColor="@color/text_main"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/btnIntro" android:layout_width="0dp" android:layout_height="42dp"
+            android:layout_weight="1" android:gravity="center" android:orientation="horizontal"
+            android:background="@drawable/bg_btn_gray" android:layout_marginEnd="8dp">
+            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_episodes"
+                android:tint="@color/text_main"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginStart="6dp" android:text="简介" android:textSize="13sp" android:textColor="@color/text_main"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/btnPlay" android:layout_width="0dp" android:layout_height="42dp"
+            android:layout_weight="1.6" android:gravity="center" android:orientation="horizontal"
+            android:background="@drawable/bg_btn_primary">
+            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_play"
+                android:tint="@color/white"/>
+            <TextView android:id="@+id/tvPlayLabel" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginStart="6dp" android:text="立即播放" android:textSize="14sp"
+                android:textStyle="bold" android:textColor="@color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

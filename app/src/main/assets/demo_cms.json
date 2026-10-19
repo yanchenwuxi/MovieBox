@@ -1,0 +1,206 @@
+{
+ "class": [
+  {
+   "type_id": "电影",
+   "type_name": "电影"
+  },
+  {
+   "type_id": "电视剧",
+   "type_name": "电视剧"
+  },
+  {
+   "type_id": "综艺",
+   "type_name": "综艺"
+  },
+  {
+   "type_id": "动漫",
+   "type_name": "动漫"
+  },
+  {
+   "type_id": "短剧",
+   "type_name": "短剧"
+  }
+ ],
+ "list": [
+  {
+   "vod_id": "1000",
+   "vod_name": "星际迷航",
+   "vod_pic": "assets/posters/p1.jpg",
+   "vod_remarks": "高清",
+   "vod_score": "9.1",
+   "vod_year": "2024",
+   "vod_area": "美国",
+   "type_name": "电影",
+   "vod_actor": "张震, 刘亦菲",
+   "vod_director": "陈默",
+   "vod_content": "《星际迷航》是一部2024年美国科幻 / 冒险作品。星际迷航讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "正片$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4$$$正片$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "vod_id": "1001",
+   "vod_name": "城市之光",
+   "vod_pic": "assets/posters/p2.jpg",
+   "vod_remarks": "高清",
+   "vod_score": "8.7",
+   "vod_year": "2023",
+   "vod_area": "中国",
+   "type_name": "电影",
+   "vod_actor": "王一博, 周迅",
+   "vod_director": "李安",
+   "vod_content": "《城市之光》是一部2023年中国剧情 / 犯罪作品。城市之光讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "正片$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4$$$正片$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "vod_id": "1002",
+   "vod_name": "山海之外",
+   "vod_pic": "assets/posters/p3.jpg",
+   "vod_remarks": "更新至第8集",
+   "vod_score": "8.9",
+   "vod_year": "2024",
+   "vod_area": "中国",
+   "type_name": "电视剧",
+   "vod_actor": "杨紫, 成毅",
+   "vod_director": "郑晓龙",
+   "vod_content": "《山海之外》是一部2024年中国奇幻 / 古装作品。山海之外讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "第1集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4$$$第1集$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+  },
+  {
+   "vod_id": "1003",
+   "vod_name": "无声告白",
+   "vod_pic": "assets/posters/p4.jpg",
+   "vod_remarks": "更新至第8集",
+   "vod_score": "9.0",
+   "vod_year": "2023",
+   "vod_area": "中国",
+   "type_name": "电视剧",
+   "vod_actor": "秦昊, 谭卓",
+   "vod_director": "辛爽",
+   "vod_content": "《无声告白》是一部2023年中国悬疑 / 家庭作品。无声告白讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "第1集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4$$$第1集$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  },
+  {
+   "vod_id": "1004",
+   "vod_name": "快乐大冲关",
+   "vod_pic": "assets/posters/p5.jpg",
+   "vod_remarks": "高清",
+   "vod_score": "8.2",
+   "vod_year": "2024",
+   "vod_area": "中国",
+   "type_name": "综艺",
+   "vod_actor": "何炅, 谢娜",
+   "vod_director": "—",
+   "vod_content": "《快乐大冲关》是一部2024年中国真人秀作品。快乐大冲关讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "正片$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4$$$正片$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "vod_id": "1005",
+   "vod_name": "音乐现场",
+   "vod_pic": "assets/posters/p6.jpg",
+   "vod_remarks": "高清",
+   "vod_score": "8.5",
+   "vod_year": "2024",
+   "vod_area": "中国",
+   "type_name": "综艺",
+   "vod_actor": "华晨宇, 周深",
+   "vod_director": "—",
+   "vod_content": "《音乐现场》是一部2024年中国音乐作品。音乐现场讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "正片$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4$$$正片$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "vod_id": "1006",
+   "vod_name": "少年江湖",
+   "vod_pic": "assets/posters/p7.jpg",
+   "vod_remarks": "更新至第8集",
+   "vod_score": "9.2",
+   "vod_year": "2024",
+   "vod_area": "中国",
+   "type_name": "动漫",
+   "vod_actor": "配音: 边江",
+   "vod_director": "木头",
+   "vod_content": "《少年江湖》是一部2024年中国热血 / 武侠作品。少年江湖讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "第1集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4$$$第1集$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+  },
+  {
+   "vod_id": "1007",
+   "vod_name": "猫咪日记",
+   "vod_pic": "assets/posters/p8.jpg",
+   "vod_remarks": "更新至第8集",
+   "vod_score": "8.8",
+   "vod_year": "2023",
+   "vod_area": "日本",
+   "type_name": "动漫",
+   "vod_actor": "配音: 花泽香菜",
+   "vod_director": "新海诚",
+   "vod_content": "《猫咪日记》是一部2023年日本治愈 / 日常作品。猫咪日记讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "第1集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4$$$第1集$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+  },
+  {
+   "vod_id": "1008",
+   "vod_name": "暗夜追凶",
+   "vod_pic": "assets/posters/p9.jpg",
+   "vod_remarks": "更新至第8集",
+   "vod_score": "8.4",
+   "vod_year": "2024",
+   "vod_area": "中国",
+   "type_name": "短剧",
+   "vod_actor": "张译, 王千源",
+   "vod_director": "曹盾",
+   "vod_content": "《暗夜追凶》是一部2024年中国悬疑 / 短剧作品。暗夜追凶讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "第1集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4$$$第1集$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  },
+  {
+   "vod_id": "1009",
+   "vod_name": "心动信号",
+   "vod_pic": "assets/posters/p10.jpg",
+   "vod_remarks": "更新至第8集",
+   "vod_score": "8.1",
+   "vod_year": "2024",
+   "vod_area": "中国",
+   "type_name": "短剧",
+   "vod_actor": "赵露思, 陈哲远",
+   "vod_director": "—",
+   "vod_content": "《心动信号》是一部2024年中国爱情 / 短剧作品。心动信号讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "第1集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4$$$第1集$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+  },
+  {
+   "vod_id": "1010",
+   "vod_name": "长风渡",
+   "vod_pic": "assets/posters/p11.jpg",
+   "vod_remarks": "高清",
+   "vod_score": "8.6",
+   "vod_year": "2023",
+   "vod_area": "中国",
+   "type_name": "电影",
+   "vod_actor": "吴京, 易烊千玺",
+   "vod_director": "徐克",
+   "vod_content": "《长风渡》是一部2023年中国动作 / 武侠作品。长风渡讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "正片$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4$$$正片$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "vod_id": "1011",
+   "vod_name": "时间旅人",
+   "vod_pic": "assets/posters/p12.jpg",
+   "vod_remarks": "更新至第8集",
+   "vod_score": "9.3",
+   "vod_year": "2024",
+   "vod_area": "英国",
+   "type_name": "电视剧",
+   "vod_actor": "Matt Smith",
+   "vod_director": "—",
+   "vod_content": "《时间旅人》是一部2024年英国科幻 / 剧情作品。时间旅人讲述了一段跨越时间与空间的故事，主角在命运的路口做出选择，最终改变了所有人的结局。本片画面精美、节奏紧凑，是近年不可多得的佳作。",
+   "vod_play_from": "影盒线路$$$备用线路",
+   "vod_play_url": "第1集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4$$$第1集$https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8#第2集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第3集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#第4集$https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#第5集$https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#第6集$https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#第7集$https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4#第8集$https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+  }
+ ]
+}

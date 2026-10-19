@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/bg_page">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:background="@color/white" android:paddingStart="2dp" android:paddingEnd="6dp">
+
+        <ImageView android:id="@+id/btnBack" android:layout_width="36dp" android:layout_height="36dp"
+            android:padding="9dp" android:src="@drawable/ic_back" android:tint="@color/text_main"/>
+        <ImageView android:id="@+id/btnForward" android:layout_width="36dp" android:layout_height="36dp"
+            android:padding="9dp" android:src="@drawable/ic_forward" android:tint="@color/text_main" android:alpha="0.35"/>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1"
+            android:background="@drawable/bg_search" android:gravity="center_vertical" android:paddingStart="10dp">
+            <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_search"
+                android:tint="@color/text_light"/>
+            <EditText android:id="@+id/etUrl" android:layout_width="0dp" android:layout_height="match_parent"
+                android:layout_weight="1" android:background="@null" android:paddingStart="6dp" android:paddingEnd="6dp"
+                android:hint="输入网址或搜索内容" android:imeOptions="actionGo" android:inputType="textUri"
+                android:maxLines="1" android:textSize="12sp" android:textColor="@color/text_main"
+                android:textColorHint="@color/text_light"/>
+        </LinearLayout>
+
+        <ImageView android:id="@+id/btnRefresh" android:layout_width="36dp" android:layout_height="36dp"
+            android:padding="9dp" android:src="@drawable/ic_refresh" android:tint="@color/text_main"/>
+        <ImageView android:id="@+id/btnClose" android:layout_width="36dp" android:layout_height="36dp"
+            android:padding="9dp" android:src="@drawable/ic_close" android:tint="@color/text_main"/>
+    </LinearLayout>
+
+    <ProgressBar android:id="@+id/progressBar" style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent" android:layout_height="2dp" android:max="100"
+        android:progressTint="@color/primary" android:progress="0"/>
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <WebView android:id="@+id/webView" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <LinearLayout android:id="@+id/layoutHome" android:layout_width="match_parent" android:layout_height="match_parent"
+            android:orientation="vertical" android:background="@color/bg_page" android:padding="24dp"
+            android:visibility="gone" android:gravity="center_horizontal">
+            <ImageView android:layout_width="64dp" android:layout_height="64dp" android:layout_marginTop="60dp"
+                android:src="@drawable/ic_browser" android:tint="@color/primary"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="14dp" android:text="内置浏览器" android:textSize="17sp"
+                android:textStyle="bold" android:textColor="@color/text_main"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" android:text="访问任意影视网站，自动嗅探播放地址"
+                android:textSize="12sp" android:textColor="@color/text_sub"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" android:text="⚠ 仅供个人学习，请勿传播侵权内容"
+                android:textSize="10sp" android:textColor="@color/text_light"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:background="@color/white" android:paddingStart="8dp" android:paddingEnd="8dp">
+        <TextView android:id="@+id/btnHome" android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:gravity="center" android:text="home" android:textSize="11sp"
+            android:textColor="@color/text_main" android:drawableTop="@drawable/ic_home" android:drawablePadding="2dp"/>
+        <TextView android:id="@+id/btnSniff" android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:gravity="center" android:text="嗅探播放" android:textSize="11sp"
+            android:textColor="@color/primary" android:drawableTop="@drawable/ic_sniff" android:drawablePadding="2dp"/>
+        <TextView android:id="@+id/btnHistoryUrl" android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:gravity="center" android:text="常用站点" android:textSize="11sp"
+            android:textColor="@color/text_main" android:drawableTop="@drawable/ic_star" android:drawablePadding="2dp"/>
+    </LinearLayout>
+</LinearLayout>

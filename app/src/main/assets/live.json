@@ -1,0 +1,39 @@
+{
+ "channels": [
+  {
+   "name": "CCTV-1 综合",
+   "group": "央视频道",
+   "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "name": "CCTV-6 电影",
+   "group": "央视频道",
+   "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "name": "湖南卫视",
+   "group": "卫视频道",
+   "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "name": "浙江卫视",
+   "group": "卫视频道",
+   "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "name": "东方卫视",
+   "group": "卫视频道",
+   "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "name": "演示直播 1",
+   "group": "测试线路",
+   "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+  },
+  {
+   "name": "演示直播 2",
+   "group": "测试线路",
+   "url": "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  }
+ ]
+}

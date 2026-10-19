@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FF30469B</color>
+    <color name="primary_dark">#FF25387E</color>
+    <color name="primary_light">#FF5C74C7</color>
+    <color name="bg_page">#FFF7F8FA</color>
+    <color name="bg_card">#FFFFFFFF</color>
+    <color name="text_main">#FF1A1A1A</color>
+    <color name="text_sub">#FF888888</color>
+    <color name="text_light">#FFB0B0B0</color>
+    <color name="divider">#FFEDEDED</color>
+    <color name="gold_start">#FFEDC75F</color>
+    <color name="gold_end">#FFFEE5A2</color>
+    <color name="gold_text">#FF694000</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="note_bg">#99000000</color>
+    <color name="search_bg">#FFF1F2F5</color>
+    <color name="player_bg">#FF000000</color>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/bg_page">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="50dp"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:paddingStart="12dp" android:paddingEnd="8dp">
+
+        <LinearLayout
+            android:id="@+id/searchBar"
+            android:layout_width="0dp" android:layout_height="36dp"
+            android:layout_weight="1" android:background="@drawable/bg_search"
+            android:gravity="center_vertical" android:paddingStart="12dp" android:paddingEnd="12dp">
+
+            <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                android:src="@drawable/ic_search" android:tint="@color/text_light"/>
+            <TextView android:id="@+id/tvSearchHint"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginStart="6dp" android:text="@string/search_hint"
+                android:textSize="13sp" android:textColor="@color/text_light"/>
+        </LinearLayout>
+
+        <ImageView android:id="@+id/btnSite"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:padding="9dp" android:src="@drawable/ic_list" android:tint="@color/text_main"/>
+        <ImageView android:id="@+id/btnAdd"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:padding="9dp" android:src="@drawable/ic_add" android:tint="@color/text_main"/>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabChannel"
+            android:layout_width="wrap_content" android:layout_height="40dp"
+            app:tabMode="scrollable" app:tabIndicatorHeight="0dp"
+            app:tabMinWidth="0dp" app:tabPaddingStart="12dp" app:tabPaddingEnd="12dp"
+            app:tabRippleColor="@null" app:tabTextColor="@color/text_main"
+            app:tabSelectedTextColor="@color/primary"/>
+    </HorizontalScrollView>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpContent"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

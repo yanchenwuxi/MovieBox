@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:background="@drawable/bg_dialog" android:padding="16dp">
+
+    <TextView android:id="@+id/title" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="简介" android:textSize="16sp" android:textStyle="bold" android:textColor="@color/text_main"/>
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" android:maxHeight="420dp">
+        <TextView android:id="@+id/desc" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="13sp" android:textColor="@color/text_sub" android:lineSpacingExtra="4dp"/>
+    </ScrollView>
+    <TextView android:id="@+id/btnOk" android:layout_width="match_parent" android:layout_height="42dp"
+        android:layout_marginTop="12dp" android:gravity="center" android:text="知道了" android:textSize="14sp"
+        android:textColor="@color/white" android:background="@drawable/bg_btn_primary"/>
+</LinearLayout>
